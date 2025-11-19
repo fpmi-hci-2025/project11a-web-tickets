@@ -1,0 +1,484 @@
+:root {
+   --bg: #fff;
+   --accent: #683142;
+   --primary: #d3b19e;
+   --text: #312528;
+   --helptext: #605558;
+   --secondary: #995e7c;
+
+   --font-family: "Inter", sans-serif;
+   --second-family: "IBM Plex Sans", sans-serif;
+   --third-family: "Roboto", sans-serif;
+   --font3: "IBM Plex Serif", sans-serif;
+   --font4: "SF Pro Text", sans-serif;
+   --font5: "SF Pro Display", sans-serif;
+}
+
+/* global */
+
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   margin: 0;
+   font-family: var(--font-family);
+   background-color: var(--bg);
+   color: var(--text);
+}
+
+.app {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+
+.main {
+   flex: 1 0 auto;
+}
+
+/* header */
+
+.header {
+   background-color: var(--primary);
+   padding: 16px 100px;
+}
+
+.header-inner {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.logo {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+   background: transparent;
+   border: none;
+   cursor: pointer;
+}
+
+.logo-icon {
+   width: 42px;
+   height: 42px;
+}
+
+.logo-text {
+   font-family: var(--font3);
+   font-weight: 600;
+   font-size: 32px;
+   color: var(--text);
+}
+
+.header-right {
+   display: flex;
+   align-items: center;
+   gap: 32px;
+}
+
+.nav {
+   display: flex;
+   gap: 32px;
+}
+
+.nav-link {
+   text-decoration: none;
+
+   font-family: var(--second-family);
+   font-weight: 600;
+   font-size: 20px;
+
+   color: var(--accent);
+}
+
+.nav-link-active {
+   border-bottom: 2px solid var(--accent);
+   padding-bottom: 2px;
+}
+
+.header-login-btn {
+   border-radius: 10px;
+   padding: 14px 24px;
+   width: 119px;
+   height: 59px;
+
+   font-family: var(--second-family);
+   font-weight: 600;
+   font-size: 20px;
+
+   background: var(--accent);
+   color: #fff;
+
+   border: none;
+   cursor: pointer;
+}
+
+/* hero */
+
+.home-page {
+   padding-bottom: 40px;
+}
+
+/* кот на фоне, карточка поверх */
+.hero-section {
+   position: relative;
+   padding: 60px 100px 100px;
+
+   background-image: url("../images/cat.png");
+   background-size: cover;
+   background-position: center center;
+   background-repeat: no-repeat;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.hero-card {
+   max-width: 680px;
+   width: 100%;
+   background-color: var(--primary);
+   padding: 28px 32px;
+   border-radius: 10px;
+   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+
+   display: flex;
+   justify-content: center;
+}
+
+/* ticket form */
+.ticket-input {
+   position: relative;
+   width: 316px;
+}
+
+.ticket-label {
+   position: absolute;
+
+   /* самое важное — смещаем вниз, чтобы сидел на рамке */
+   top: -8px; /* регулируй от -8px до -12px для pixel perfect */
+   left: 22px; /* совпадение с padding инпута */
+
+   padding: 0 6px;
+   background: var(--primary); /* перекрываем рамку */
+
+   font-family: var(--second-family);
+   font-size: 14px;
+   color: var(--helptext);
+}
+
+.ticket-input input {
+   width: 316px;
+   height: 68px;
+   padding: 20px 24px;
+
+   border: 2px solid var(--secondary);
+   border-radius: 10px;
+
+   background: var(--primary);
+   font-size: 18px;
+   color: var(--text);
+   font-weight: 400;
+
+   outline: none;
+}
+
+.ticket-input input::placeholder {
+   color: var(--text);
+   opacity: 0.6;
+}
+
+.ticket-input-row {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   width: 316px;
+   height: 68px;
+
+   border: 2px solid var(--secondary);
+   border-radius: 10px;
+
+   background: var(--primary);
+   padding: 0 18px 0 0px;
+}
+
+.ticket-input-row input {
+   font-family: var(--second-family);
+   color: var(--helptext);
+   flex: 1;
+   height: 100%;
+   border: none;
+   outline: none;
+   background: none;
+
+   font-size: 20px;
+}
+
+.ticket-icon {
+   display: flex;
+   align-items: center;
+}
+
+.ticket-form {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+}
+
+.ticket-form-row {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 12px;
+}
+
+.ticket-field {
+   display: flex;
+   flex-direction: column;
+   gap: 4px;
+}
+
+.ticket-field label {
+   font-size: 12px;
+   color: var(--helptext);
+}
+
+/* фон инпута = фон карточки */
+.ticket-field input {
+   padding: 10px 12px;
+   border-radius: 10px;
+   border: 1px solid #c89a82;
+   font-size: 14px;
+   background-color: var(--primary);
+   outline: none;
+}
+
+.ticket-field input::placeholder {
+   color: var(--helptext);
+}
+
+.ticket-field input:focus {
+   border-color: var(--accent);
+}
+
+.ticket-form-actions {
+   margin-top: 8px;
+   display: flex;
+   justify-content: center;
+}
+
+.primary-btn {
+   border-radius: 10px;
+   padding: 14px 24px;
+   width: 212px;
+   height: 59px;
+
+   border: none;
+   background-color: var(--accent);
+   color: #fff;
+   cursor: pointer;
+   font-size: 24px;
+}
+
+/* help section */
+
+.help-section {
+   padding: 0 100px 60px;
+}
+
+.help-inner {
+   background-color: var(--primary);
+   border-radius: 10px;
+   padding: 40px 150px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 16px;
+   margin-top: 60px;
+}
+
+.help-title {
+   margin: 0;
+   font-size: 32px;
+}
+
+.secondary-btn {
+   padding: 14px 22px;
+   border-radius: 10px;
+   border: none;
+   background-color: var(--accent);
+   color: #fff;
+   cursor: pointer;
+   font-size: 24px;
+}
+
+/* promotions */
+
+.promotions-section {
+   padding: 0 100px;
+}
+
+.promotions-title {
+   text-align: center;
+   margin-bottom: 20px;
+   font-size: 32px;
+}
+
+.promotions-grid {
+   display: grid;
+   grid-template-columns: repeat(3, minmax(0, 1fr));
+   gap: 16px;
+   margin-bottom: 20px;
+}
+
+.promo-card {
+   width: 397px;
+   height: 180px;
+
+   background: var(--primary);
+   border: 2px solid var(--secondary);
+   border-radius: 10px;
+
+   padding: 32px 24px;
+   position: relative;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+}
+
+.promo-text {
+   display: flex;
+   flex-direction: column;
+   gap: 12px; /* <-- ОТСТУП 12px */
+}
+
+.promo-text h3 {
+   margin: 0;
+   font-size: 20px;
+   font-weight: 600;
+   color: var(--text);
+}
+
+.promo-text p {
+   margin: 0;
+   font-size: 16px;
+   color: var(--helptext);
+}
+
+.promo-arrow {
+   position: absolute;
+   right: 24px;
+   bottom: 24px;
+   display: flex;
+}
+
+.promotions-actions {
+   display: flex;
+   justify-content: center;
+}
+
+/* generic pages */
+
+.page {
+   margin: 32px 0;
+   padding: 0 100px 40px;
+}
+
+.page-centered {
+   text-align: center;
+}
+
+.link-button {
+   display: inline-block;
+   margin-top: 12px;
+   padding: 8px 16px;
+   border-radius: 10px;
+   background-color: var(--accent);
+   color: #fff;
+   text-decoration: none;
+   font-size: 14px;
+}
+
+/* footer */
+
+.footer {
+   flex-shrink: 0;
+   background-color: var(--accent);
+   color: #fff;
+   padding: 16px 100px;
+}
+
+.footer-inner {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+}
+
+.footer-logo-icon {
+   font-size: 24px;
+}
+
+.footer-logo-text {
+   font-size: 16px;
+}
+
+.footer-text {
+   font-family: var(--font3);
+   font-weight: 600;
+   font-size: 26px;
+   color: var(--bg);
+}
+
+/* responsive */
+
+@media (max-width: 900px) {
+   .header {
+      padding: 12px 16px;
+   }
+
+   .hero-section {
+      padding: 24px 16px 40px;
+      background-position: center;
+   }
+
+   .hero-card {
+      margin: 0 auto;
+   }
+
+   .ticket-form-row {
+      grid-template-columns: 1fr;
+   }
+
+   .help-section,
+   .promotions-section,
+   .page,
+   .footer {
+      padding-left: 16px;
+      padding-right: 16px;
+   }
+
+   .help-inner {
+      flex-direction: column;
+      align-items: flex-start;
+   }
+
+   .promotions-grid {
+      grid-template-columns: 1fr;
+   }
+
+   .header-inner {
+      flex-wrap: wrap;
+      gap: 12px;
+   }
+
+   .nav {
+      order: 3;
+      justify-content: flex-start;
+   }
+}
