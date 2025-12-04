@@ -42,7 +42,6 @@ function ResultsPage() {
       setForm(prev => ({ ...prev, [name]: value }));
    }
 
-   // загрузка билетов
    useEffect(() => {
       const results = ticketsData.filter(ticket =>
          ticket.from === state.from &&
@@ -53,11 +52,9 @@ function ResultsPage() {
       setFiltered(results);
    }, [state]);
 
-   // применение сортировки и фильтров
    useEffect(() => {
       let list = [...tickets];
 
-      // фильтры
       if (filterType === "morning") {
          list = list.filter(t => parseInt(t.timeStart) < 12);
       }
@@ -71,7 +68,6 @@ function ResultsPage() {
          list = list.filter(t => parseInt(t.timeStart) >= 18);
       }
 
-      // сортировка
       if (sortType === "priceAsc") {
          list.sort((a, b) => a.price - b.price);
       }
@@ -91,7 +87,6 @@ function ResultsPage() {
    return (
       <div className="results-page">
 
-         {/* --- КОМПАКТНАЯ ФОРМА --- */}
          <form
             onSubmit={handleSubmit}
             className="ticket-form compact"
@@ -179,7 +174,6 @@ function ResultsPage() {
             </div>
          </form>
 
-         {/* --- SORT + FILTER кнопки --- */}
          <div style={{ padding: "20px 100px", display: "flex", gap: "16px" }}>
             <div style={{ position: "relative" }}>
                <button
@@ -262,7 +256,6 @@ function ResultsPage() {
             </div>
          </div>
 
-         {/* --- СПИСОК БИЛЕТОВ --- */}
          <div style={{ padding: "0 100px" }}>
             {filtered.length === 0 && (
                <div

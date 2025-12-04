@@ -133,7 +133,6 @@ function TicketPage() {
         background: "white"
       }}>
 
-        {/* ---------- ЛЕВАЯ ЧАСТЬ ---------- */}
         <div style={{ flex: 1 }}>
 
           {passengers.map((p, index) => (
@@ -148,7 +147,6 @@ function TicketPage() {
                 position: "relative"
               }}
             >
-              {/* Кнопка удаления */}
               {index > 0 && (
                 <button
                   onClick={() => removePassenger(p.id)}

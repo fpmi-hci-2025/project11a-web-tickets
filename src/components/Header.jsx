@@ -8,10 +8,8 @@ function Header() {
 
    function handleClick() {
       if (!isLoggedIn) {
-         // если не залогинен → просто login page
          navigate("/login");
       } else {
-         // если залогинен и нажали → logout + смена текста на "Войти"
          logout();
          navigate("/");
       }

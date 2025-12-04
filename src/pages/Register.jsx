@@ -30,7 +30,6 @@ function Register() {
   function handleRegister() {
     if (!isValid) return;
 
-    // Регистрируем пользователя и логиним автоматически
     localStorage.setItem("isLoggedIn", "true");
     navigate("/");
   }

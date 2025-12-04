@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import maria from "../images/maria.png"; // аватар, ты можешь заменить
+import maria from "../images/maria.png"; 
 
 function SupportChat() {
   const navigate = useNavigate();
@@ -7,7 +7,6 @@ function SupportChat() {
   return (
     <div style={{ display: "flex", minHeight: "calc(100vh - 165px)" }}>
       
-      {/* Левая панель */}
       <div
         style={{
           width: "380px",
@@ -44,10 +43,8 @@ function SupportChat() {
         </p>
       </div>
 
-      {/* Правая часть — чат */}
       <div style={{ flex: 1, background: "#fff", position: "relative" }}>
         
-        {/* Приветственное сообщение */}
         <div
           style={{
             position: "absolute",
@@ -83,7 +80,6 @@ function SupportChat() {
           </div>
         </div>
 
-        {/* Поле ввода */}
         <div
           style={{
             position: "absolute",

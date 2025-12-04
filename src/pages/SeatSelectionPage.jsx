@@ -21,7 +21,6 @@ function ServicesPage() {
 
   return (
     <div style={{ padding: "20px 60px" }}>
-      {/* Хлебные крошки */}
       <div style={{
         fontSize: "16px",
         display: "flex",
@@ -40,7 +39,6 @@ function ServicesPage() {
         <span style={{ opacity: 0.6 }}>Оплата</span>
       </div>
 
-      {/* Маршрут */}
       <div style={{
         background: "#d3b19e",
         padding: "20px",
@@ -60,7 +58,6 @@ function ServicesPage() {
 
       <h2 style={{ marginBottom: "18px" }}>Добавьте спокойствия и комфорта</h2>
 
-      {/* Страховка */}
       <ServiceBlock
         title="Страхование на время поездки"
         price="19,24 BYN"
@@ -70,7 +67,6 @@ function ServicesPage() {
         description2="Если на вокзале или в поезде возникнут проблемы со здоровьем, вы получите деньги за каждый день лечения."
       />
 
-      {/* Возврат */}
       <ServiceBlock
         title="100% возврат билета по любой причине"
         price="27,72 BYN"
@@ -80,7 +76,6 @@ function ServicesPage() {
         description2="На вашу карту вернётся 8 876,00 ₽. Онлайн-возврат можно сделать не позднее чем за 1 час до начала поездки."
       />
 
-      {/* SMS */}
       <ServiceBlock
         title="Бесплатное СМС с напоминанием о поездке"
         price=""
@@ -89,12 +84,10 @@ function ServicesPage() {
         description1="Я хочу получить сообщение"
       />
 
-      {/* Способ оплаты */}
       <h2 style={{ marginTop: "40px" }}>Выберите способ оплаты</h2>
 
       <div style={{ display: "flex", gap: "20px", marginBottom: "30px" }}>
 
-        {/* СБП */}
         <div
           onClick={() => setPaymentMethod("sbp")}
           style={{
@@ -116,7 +109,6 @@ function ServicesPage() {
           <span>Система быстрых платежей</span>
         </div>
 
-        {/* Карта */}
         <div
           onClick={() => setPaymentMethod("card")}
           style={{
@@ -140,7 +132,6 @@ function ServicesPage() {
 
       </div>
 
-      {/* КНОПКА */}
       <button
         onClick={() => navigate("/success")}
         style={{
@@ -161,7 +152,6 @@ function ServicesPage() {
   );
 }
 
-/* Блок услуги */
 function ServiceBlock({ title, price, description1, description2, value, onChange }) {
   return (
     <div style={{

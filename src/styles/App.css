@@ -129,7 +129,6 @@ body {
    padding-bottom: 40px;
 }
 
-/* кот на фоне, карточка поверх */
 .hero-section {
    position: relative;
    padding: 60px 100px 100px;
@@ -165,12 +164,11 @@ body {
 .ticket-label {
    position: absolute;
 
-   /* самое важное — смещаем вниз, чтобы сидел на рамке */
-   top: -8px; /* регулируй от -8px до -12px для pixel perfect */
-   left: 22px; /* совпадение с padding инпута */
+   top: -8px; 
+   left: 22px; 
 
    padding: 0 6px;
-   background: var(--primary); /* перекрываем рамку */
+   background: var(--primary); 
 
    font-family: var(--second-family);
    font-size: 14px;
@@ -253,7 +251,6 @@ body {
    color: var(--helptext);
 }
 
-/* фон инпута = фон карточки */
 .ticket-field input {
    padding: 10px 12px;
    border-radius: 10px;
@@ -360,7 +357,7 @@ body {
 .promo-text {
    display: flex;
    flex-direction: column;
-   gap: 12px; /* <-- ОТСТУП 12px */
+   gap: 12px; 
 }
 
 .promo-text h3 {
@@ -488,7 +485,6 @@ body {
    }
 }
 
-/* Убираем стандартную иконку календаря */
 input[type="date"]::-webkit-calendar-picker-indicator {
    opacity: 0;
    display: none;
@@ -500,39 +496,30 @@ input[type="date"] {
    background-color: transparent;
 }
 
-/* ==============
-   COMPACT MODE
-   для страницы результатов
-================ */
 
-/* ======= COMPACT MODE В ОДНУ СТРОКУ ======= */
 
 .ticket-form.compact {
    display: flex;
-   flex-direction: row;        /* всё в одну строку */
+   flex-direction: row;        
    align-items: flex-end;
    gap: 12px;
    width: 100%;
 }
 
-/* Убираем внутренние строки — теперь всё в одной */
 .ticket-form.compact .ticket-form-row {
    flex-direction: row;
-   display: contents;          /* элементы ведут себя как будто без контейнера */
+   display: contents;         /
 }
 
-/* Каждый инпут-бокс занимает равную ширину */
 .ticket-form.compact .ticket-input {
    flex: 1;
-   min-width: 180px;           /* чтобы не ломалось при сужении */
+   min-width: 180px;          
 }
 
-/* Внутренний контейнер (для даты) тоже растягивается */
 .ticket-form.compact .ticket-input-row {
    width: 100%;
 }
 
-/* Инпуты — одинаковой высоты и на всю ширину */
 .ticket-form.compact .ticket-input input {
    width: 100%;
    height: 68px;
@@ -540,7 +527,6 @@ input[type="date"] {
    box-sizing: border-box;
 }
 
-/* Кнопка — тоже в одной строке, такая же по высоте */
 .ticket-form.compact .ticket-form-actions button {
    height: 68px;
    padding: 0 24px;
@@ -548,7 +534,6 @@ input[type="date"] {
    white-space: nowrap;
 }
 
-/* В компактном режиме кнопка НЕ переносится на новую строку */
 .ticket-form.compact .ticket-form-actions {
    margin: 0;
 }
@@ -608,7 +593,6 @@ input[type="date"] {
    color: var(--accent);
 }
 
-/* === DROPDOWN MENU (выпадающий список) === */
 
 .dropdown-menu {
    background: #ffffff;
@@ -624,7 +608,6 @@ input[type="date"] {
    animation: dropdownFade 0.18s ease-out;
 }
 
-/* Анимация появления */
 @keyframes dropdownFade {
    from {
       opacity: 0;
@@ -636,7 +619,6 @@ input[type="date"] {
    }
 }
 
-/* Пункт выпадающего меню */
 .dropdown-item {
    padding: 12px 18px;
    font-size: 16px;
@@ -646,13 +628,11 @@ input[type="date"] {
    transition: 0.15s ease-in-out;
 }
 
-/* Ховер */
 .dropdown-item:hover {
    background: var(--primary);
    color: var(--accent);
 }
 
-/* Разделитель внутри меню (если нужен) */
 .dropdown-separator {
    height: 1px;
    background: var(--accent);
@@ -668,7 +648,6 @@ input[type="date"] {
    transform: translateX(4px);
 }
 
-/* Основной контейнер */
 .ticket-page {
   display: flex;
   gap: 40px;
@@ -676,7 +655,6 @@ input[type="date"] {
   background: var(--primary);
 }
 
-/* Левая часть — форма */
 .ticket-left {
   flex: 1;
   display: flex;
@@ -684,7 +662,6 @@ input[type="date"] {
   gap: 24px;
 }
 
-/* Карточка пассажира */
 .passenger-card {
   background: #f7e1d3;
   border: 2px solid var(--secondary);
@@ -695,7 +672,6 @@ input[type="date"] {
   gap: 16px;
 }
 
-/* Заголовок карточки */
 .passenger-header h2 {
   margin: 0;
   font-size: 22px;
@@ -703,7 +679,6 @@ input[type="date"] {
   color: var(--text);
 }
 
-/* Заголовки секций */
 .passenger-card h3 {
   margin: 4px 0;
   font-size: 18px;
@@ -711,14 +686,12 @@ input[type="date"] {
   color: var(--text);
 }
 
-/* Ряды инпутов */
 .row {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-/* Все поля */
 .passenger-card input,
 .passenger-card select {
   flex: 1;
@@ -731,7 +704,6 @@ input[type="date"] {
   font-family: var(--second-family);
 }
 
-/* Чекбокс */
 .checkbox {
   display: flex;
   align-items: center;
@@ -745,7 +717,6 @@ input[type="date"] {
   height: 18px;
 }
 
-/* Кнопка удаления пассажира */
 .delete-passenger {
   background: #c23a3a;
   color: #fff;
@@ -762,7 +733,6 @@ input[type="date"] {
   background: #a22f2f;
 }
 
-/* Кнопка добавления пассажира */
 .add-passenger-btn {
   width: 100%;
   background: var(--accent);
@@ -780,12 +750,10 @@ input[type="date"] {
   background: #542230;
 }
 
-/* Чекбокс "согласие" */
 .agree {
   margin-top: 12px;
 }
 
-/* Кнопка продолжения */
 .continue-btn {
   width: 100%;
   background: #683142;
@@ -804,7 +772,6 @@ input[type="date"] {
   background: #4e2531;
 }
 
-/* Правая колонка (sidebar) */
 .ticket-sidebar {
   width: 340px;
   background: #fff;

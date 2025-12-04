@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 function TicketSearchForm({ compact = false, style = {} }) {
    const navigate = useNavigate();
 
-   // финальные данные — жестко зафиксированы
    const form = {
       from: "Минск",
       to: "Гродно",
@@ -22,7 +21,6 @@ function TicketSearchForm({ compact = false, style = {} }) {
          onSubmit={handleSubmit}
          style={style}
       >
-         {/* ГОРОДА */}
          <div className="ticket-form-row">
             <div className="ticket-input">
                <span className="ticket-label">Пункт отправки</span>
@@ -41,7 +39,6 @@ function TicketSearchForm({ compact = false, style = {} }) {
             </div>
          </div>
 
-         {/* ДАТЫ */}
          <div className="ticket-form-row">
             <div className="ticket-input">
                <span className="ticket-label">Дата начала поездки</span>
@@ -52,7 +49,6 @@ function TicketSearchForm({ compact = false, style = {} }) {
                      disabled
                   />
 
-                  {/* SVG НЕ ТРОГАЮ */}
                   <span className="ticket-icon">
                      <svg
                         width="28"
@@ -85,7 +81,6 @@ function TicketSearchForm({ compact = false, style = {} }) {
                      disabled
                   />
 
-                  {/* SVG НЕ ТРОГАЮ */}
                   <span className="ticket-icon">
                      <svg
                         width="28"
