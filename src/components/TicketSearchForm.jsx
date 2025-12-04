@@ -1,40 +1,40 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function TicketSearchForm() {
-   const [form, setForm] = useState({
-      from: "",
-      to: "",
-      startDate: "26/09/2025",
-      endDate: "26/09/2025",
-   });
+function TicketSearchForm({ compact = false, style = {} }) {
+   const navigate = useNavigate();
 
-   function handleChange(e) {
-      const { name, value } = e.target;
-      setForm((prev) => ({ ...prev, [name]: value }));
+   const form = {
+      from: "Минск",
+      to: "Гродно",
+      startDate: "2025-12-18",
+      endDate: "2025-12-21"
+   };
+
+   function handleSubmit(e) {
+      e.preventDefault();
+      navigate("/results", { state: form });
    }
 
    return (
-      <form className="ticket-form">
+      <form
+         className={compact ? "ticket-form compact" : "ticket-form"}
+         onSubmit={handleSubmit}
+         style={style}
+      >
          <div className="ticket-form-row">
             <div className="ticket-input">
                <span className="ticket-label">Пункт отправки</span>
                <input
-                  type="text"
-                  name="from"
                   value={form.from}
-                  onChange={handleChange}
-                  placeholder="Пункт отправки"
+                  disabled
                />
             </div>
 
             <div className="ticket-input">
                <span className="ticket-label">Пункт назначения</span>
                <input
-                  type="text"
-                  name="to"
                   value={form.to}
-                  onChange={handleChange}
-                  placeholder="Пункт назначения"
+                  disabled
                />
             </div>
          </div>
@@ -44,10 +44,9 @@ function TicketSearchForm() {
                <span className="ticket-label">Дата начала поездки</span>
                <div className="ticket-input-row">
                   <input
-                     type="text"
-                     name="startDate"
+                     type="date"
                      value={form.startDate}
-                     onChange={handleChange}
+                     disabled
                   />
 
                   <span className="ticket-icon">
@@ -73,15 +72,13 @@ function TicketSearchForm() {
                </div>
             </div>
 
-            {/* ДАТА КОНЦА */}
             <div className="ticket-input">
                <span className="ticket-label">Дата конца поездки</span>
                <div className="ticket-input-row">
                   <input
-                     type="text"
-                     name="endDate"
+                     type="date"
                      value={form.endDate}
-                     onChange={handleChange}
+                     disabled
                   />
 
                   <span className="ticket-icon">
