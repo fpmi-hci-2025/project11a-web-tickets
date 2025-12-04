@@ -12,6 +12,7 @@ function ArrowRight({ color = "#683142", size = 28 }) {
       style={{ minWidth: size }}
     >
       <path d="M9 18l6-6-6-6" />
+      
     </svg>
   );
 }
