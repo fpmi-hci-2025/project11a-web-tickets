@@ -1,7 +1,21 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Header() {
    const navigate = useNavigate();
+   const { isLoggedIn, logout } = useContext(AuthContext);
+
+   function handleClick() {
+      if (!isLoggedIn) {
+         // если не залогинен → просто login page
+         navigate("/login");
+      } else {
+         // если залогинен и нажали → logout + смена текста на "Войти"
+         logout();
+         navigate("/");
+      }
+   }
 
    return (
       <header className="header">
@@ -34,9 +48,9 @@ function Header() {
 
                <button
                   className="header-login-btn"
-                  onClick={() => navigate("/login")}
+                  onClick={handleClick}
                >
-                  Войти
+                  {isLoggedIn ? "Личный кабинет" : "Войти"}
                </button>
             </div>
          </div>

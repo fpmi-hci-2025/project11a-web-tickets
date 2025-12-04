@@ -102,6 +102,10 @@ body {
 }
 
 .header-login-btn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
    border-radius: 10px;
    padding: 14px 24px;
    width: 119px;
@@ -117,6 +121,7 @@ body {
    border: none;
    cursor: pointer;
 }
+
 
 /* hero */
 
@@ -182,7 +187,7 @@ body {
 
    background: var(--primary);
    font-size: 18px;
-   color: var(--text);
+   color: var(--helptext);
    font-weight: 400;
 
    outline: none;
@@ -482,3 +487,350 @@ body {
       justify-content: flex-start;
    }
 }
+
+/* Убираем стандартную иконку календаря */
+input[type="date"]::-webkit-calendar-picker-indicator {
+   opacity: 0;
+   display: none;
+}
+
+input[type="date"] {
+   appearance: none;
+   -webkit-appearance: none;
+   background-color: transparent;
+}
+
+/* ==============
+   COMPACT MODE
+   для страницы результатов
+================ */
+
+/* ======= COMPACT MODE В ОДНУ СТРОКУ ======= */
+
+.ticket-form.compact {
+   display: flex;
+   flex-direction: row;        /* всё в одну строку */
+   align-items: flex-end;
+   gap: 12px;
+   width: 100%;
+}
+
+/* Убираем внутренние строки — теперь всё в одной */
+.ticket-form.compact .ticket-form-row {
+   flex-direction: row;
+   display: contents;          /* элементы ведут себя как будто без контейнера */
+}
+
+/* Каждый инпут-бокс занимает равную ширину */
+.ticket-form.compact .ticket-input {
+   flex: 1;
+   min-width: 180px;           /* чтобы не ломалось при сужении */
+}
+
+/* Внутренний контейнер (для даты) тоже растягивается */
+.ticket-form.compact .ticket-input-row {
+   width: 100%;
+}
+
+/* Инпуты — одинаковой высоты и на всю ширину */
+.ticket-form.compact .ticket-input input {
+   width: 100%;
+   height: 68px;
+   padding: 20px 24px;
+   box-sizing: border-box;
+}
+
+/* Кнопка — тоже в одной строке, такая же по высоте */
+.ticket-form.compact .ticket-form-actions button {
+   height: 68px;
+   padding: 0 24px;
+   font-size: 20px;
+   white-space: nowrap;
+}
+
+/* В компактном режиме кнопка НЕ переносится на новую строку */
+.ticket-form.compact .ticket-form-actions {
+   margin: 0;
+}
+
+
+.result-card {
+   background: var(--primary);
+   border: 2px solid var(--secondary);
+   border-radius: 10px;
+   padding: 24px 32px;
+
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   margin-bottom: 20px;
+
+   cursor: pointer;
+   transition: background 0.15s ease;
+}
+
+.result-card:hover {
+   background: #d8b8a5;
+}
+
+.result-card-left {
+   display: flex;
+   flex-direction: column;
+   gap: 6px;
+}
+
+.result-route {
+   font-size: 24px;
+   font-weight: 600;
+   display: flex;
+   align-items: center;
+   gap: 8px;
+}
+
+.result-time {
+   font-size: 16px;
+   color: var(--helptext);
+}
+
+.result-price {
+   font-size: 24px;
+   font-weight: 700;
+   color: var(--accent);
+   display: flex;
+   align-items: center;
+   gap: 6px;
+}
+
+.result-arrow {
+   font-size: 22px;
+   font-weight: 700;
+   color: var(--accent);
+}
+
+/* === DROPDOWN MENU (выпадающий список) === */
+
+.dropdown-menu {
+   background: #ffffff;
+   border: 2px solid var(--accent);
+   border-radius: 12px;
+   padding: 6px 0;
+   width: 220px;
+   position: absolute;
+   top: 70px;
+   left: 0;
+   z-index: 100;
+   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+   animation: dropdownFade 0.18s ease-out;
+}
+
+/* Анимация появления */
+@keyframes dropdownFade {
+   from {
+      opacity: 0;
+      transform: translateY(-4px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+/* Пункт выпадающего меню */
+.dropdown-item {
+   padding: 12px 18px;
+   font-size: 16px;
+   font-family: var(--second-family);
+   cursor: pointer;
+   color: var(--text);
+   transition: 0.15s ease-in-out;
+}
+
+/* Ховер */
+.dropdown-item:hover {
+   background: var(--primary);
+   color: var(--accent);
+}
+
+/* Разделитель внутри меню (если нужен) */
+.dropdown-separator {
+   height: 1px;
+   background: var(--accent);
+   margin: 4px 0;
+   opacity: 0.2;
+}
+
+.result-arrow svg {
+   transition: transform 0.15s ease;
+}
+
+.result-card:hover .result-arrow svg {
+   transform: translateX(4px);
+}
+
+/* Основной контейнер */
+.ticket-page {
+  display: flex;
+  gap: 40px;
+  padding: 40px 100px;
+  background: var(--primary);
+}
+
+/* Левая часть — форма */
+.ticket-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Карточка пассажира */
+.passenger-card {
+  background: #f7e1d3;
+  border: 2px solid var(--secondary);
+  border-radius: 12px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Заголовок карточки */
+.passenger-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Заголовки секций */
+.passenger-card h3 {
+  margin: 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Ряды инпутов */
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Все поля */
+.passenger-card input,
+.passenger-card select {
+  flex: 1;
+  min-width: 180px;
+  padding: 14px 16px;
+  border: 2px solid var(--secondary);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px;
+  font-family: var(--second-family);
+}
+
+/* Чекбокс */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.checkbox input {
+  width: 18px;
+  height: 18px;
+}
+
+/* Кнопка удаления пассажира */
+.delete-passenger {
+  background: #c23a3a;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-end;
+  transition: background 0.2s;
+}
+
+.delete-passenger:hover {
+  background: #a22f2f;
+}
+
+/* Кнопка добавления пассажира */
+.add-passenger-btn {
+  width: 100%;
+  background: var(--accent);
+  color: white;
+  padding: 16px;
+  font-size: 18px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.add-passenger-btn:hover {
+  background: #542230;
+}
+
+/* Чекбокс "согласие" */
+.agree {
+  margin-top: 12px;
+}
+
+/* Кнопка продолжения */
+.continue-btn {
+  width: 100%;
+  background: #683142;
+  color: white;
+  padding: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s ease;
+}
+
+.continue-btn:hover {
+  background: #4e2531;
+}
+
+/* Правая колонка (sidebar) */
+.ticket-sidebar {
+  width: 340px;
+  background: #fff;
+  border: 2px solid var(--secondary);
+  border-radius: 12px;
+  padding: 24px 28px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ticket-sidebar h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.ticket-sidebar p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text);
+}
+
+
+
+
+
+

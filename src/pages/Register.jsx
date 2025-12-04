@@ -1,36 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import catImage from "../images/cat.png";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 
-
-function Login() {
+function Register() {
   const navigate = useNavigate();
-
-  const { login } = useContext(AuthContext);
-
 
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
-    password: ""
+    phone: "",
+    email: "",
+    password: "",
+    repeat: ""
   });
 
   const isValid =
     form.firstName.trim() &&
     form.lastName.trim() &&
-    form.password.trim();
+    form.phone.trim() &&
+    form.email.trim() &&
+    form.password.trim() &&
+    form.repeat.trim() &&
+    form.password === form.repeat;
 
   function updateField(field, value) {
     setForm(prev => ({ ...prev, [field]: value }));
   }
 
-  function handleLogin() {
+  function handleRegister() {
     if (!isValid) return;
 
-    login();
-
+    // Регистрируем пользователя и логиним автоматически
+    localStorage.setItem("isLoggedIn", "true");
     navigate("/");
   }
 
@@ -50,16 +51,22 @@ function Login() {
     >
       <div
         style={{
-          width: "440px",
+          width: "700px",
           background: "#d3b19e",
           borderRadius: "14px",
           border: "2px solid #683142",
           padding: "40px 50px"
         }}
       >
-        <h2 style={{ textAlign: "center", marginBottom: "26px" }}>Вход</h2>
+        <h2 style={{ textAlign: "center", marginBottom: "26px" }}>Регистрация</h2>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "16px"
+          }}
+        >
           <input
             placeholder="Имя"
             style={inputStyle}
@@ -73,36 +80,55 @@ function Login() {
             onChange={e => updateField("lastName", e.target.value)}
           />
           <input
+            placeholder="Номер телефона"
+            style={inputStyle}
+            value={form.phone}
+            onChange={e => updateField("phone", e.target.value)}
+          />
+          <input
+            placeholder="Почта"
+            style={inputStyle}
+            value={form.email}
+            onChange={e => updateField("email", e.target.value)}
+          />
+          <input
             type="password"
             placeholder="Пароль"
             style={inputStyle}
             value={form.password}
             onChange={e => updateField("password", e.target.value)}
           />
+          <input
+            type="password"
+            placeholder="Повторите пароль"
+            style={inputStyle}
+            value={form.repeat}
+            onChange={e => updateField("repeat", e.target.value)}
+          />
         </div>
 
         <button
           style={{
-            ...loginBtn,
+            ...registerBtn,
             background: isValid ? "#683142" : "#8d6c75",
             cursor: isValid ? "pointer" : "not-allowed"
           }}
           disabled={!isValid}
-          onClick={handleLogin}
+          onClick={handleRegister}
         >
-          Войти
+          Зарегистрироваться
         </button>
 
         <p
           style={{
             textAlign: "center",
-            marginTop: "20px",
+            marginTop: "16px",
             cursor: "pointer",
             fontWeight: 600
           }}
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/login")}
         >
-          Зарегистрироваться
+          Войти
         </p>
       </div>
     </div>
@@ -117,7 +143,7 @@ const inputStyle = {
   color: "#4b3039"
 };
 
-const loginBtn = {
+const registerBtn = {
   marginTop: "24px",
   width: "100%",
   color: "white",
@@ -127,4 +153,4 @@ const loginBtn = {
   fontSize: "18px"
 };
 
-export default Login;
+export default Register;
