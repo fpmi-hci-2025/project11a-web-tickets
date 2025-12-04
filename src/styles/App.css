@@ -508,7 +508,7 @@ input[type="date"] {
 
 .ticket-form.compact .ticket-form-row {
    flex-direction: row;
-   display: contents;         /
+   display: contents;         
 }
 
 .ticket-form.compact .ticket-input {
