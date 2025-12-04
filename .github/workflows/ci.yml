@@ -5,6 +5,7 @@ on:
     branches: [ develop, main ]
   pull_request:
     branches: [ develop, main ]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -26,12 +27,12 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-      - name: Run tests
-        run: npm test -- --watchAll=false
+      - name: Run tests with coverage
+        run: npm test -- --coverage --watchAll=false
 
       - name: Codacy Coverage Reporter
         uses: codacy/codacy-coverage-reporter-action@v1
-        if: success() 
+        if: success()
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
           coverage-reports: coverage/lcov.info
